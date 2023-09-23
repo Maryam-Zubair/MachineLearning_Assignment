@@ -7,8 +7,9 @@ The main steps in my program are :-
   4. Question Answering: The GPT-3.5 Turbo model processes the embeddings and context of both the question and the available text to    find relevant parts which helps in generating appropriate answer
 
 Applications:-
-\
+
 1. Command Line Interface:-\
+   \
  a. User interacts with the program by inputting questions through the terminal.\
  b. Program processes the questions and finds relevant information from data collected, and try to generate appropriate answer.\
  c. The answer is displayed on the terminal for the user to see.
