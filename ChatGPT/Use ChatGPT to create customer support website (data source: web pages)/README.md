@@ -8,16 +8,19 @@ The main steps in my program are :-
 
 Applications:-
 1. Command Line Interface:-\
- User interacts with the program by inputting questions through the terminal.\
- Program processes the questions and finds relevant information from data collected, and try to generate appropriate answer.\
- The answer is displayed on the terminal for the user to see.
+ a. User interacts with the program by inputting questions through the terminal.\
+ b. Program processes the questions and finds relevant information from data collected, and try to generate appropriate answer.\
+ c. The answer is displayed on the terminal for the user to see.
      
 2. Web Based User Interface:-\
-a. Web Framework (Flask):\
+ a. Web Framework (Flask):\
  Flask is used as a web framework to create a web application.\
- b. HTML Templates:\
+\
+ b. HTML Templates:\
  HTML templates are used to create the user interface (webpage) where users can input their questions.\
- c. Question Submission:\
+\
+ c. Question Submission:\
  Users input their questions through the web interface (a form on the webpage).\
- d. Answer Display:\
+\
+ d. Answer Display:\
  The answer is then displayed on the webpage, allowing the user to view it.
