@@ -14,9 +14,9 @@ Applications:-
      
 2. Web Based User Interface:-\
    a. Web Framework (Flask):\
-      Flask is used as a web framework to create a web application.\
+    	Flask is used as a web framework to create a web application.\
    b. HTML Templates:\
-      HTML templates are used to create the user interface (webpage) where users can input their questions.\
+   		HTML templates are used to create the user interface (webpage) where users can input their questions.\
    c. Question Submission:\
       Users input their questions through the web interface (a form on the webpage).\
    d. Answer Display:\
