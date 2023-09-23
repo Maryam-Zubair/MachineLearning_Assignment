@@ -1,6 +1,6 @@
 Building an AI that can answer questions about any website using a large language model called GPT-3.5 Turbo, provided by OpenAI.
 
-The main steps in my program are :-\
+The main steps in my program are :-
   1. Web Scrapping & Data Collection : Crawled website (openAI) to gather information
   2. Text Processing & Tokenization: Breakdown the text into token (smaller chunks)
   3. Embdedding Index: Analyzed the text and generated numerical vectors
