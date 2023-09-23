@@ -9,7 +9,7 @@ The main steps in my program are :-
 Applications:-
 1. Command Line Interface:-\
   * User interacts with the program by inputting questions through the terminal.\
-    b. Program processes the questions and finds relevant information from data collected, and try to generate appropriate answer.\
+    * Program processes the questions and finds relevant information from data collected, and try to generate appropriate answer.\
     c. The answer is displayed on the terminal for the user to see.
      
 3. Web Based User Interface:-\
