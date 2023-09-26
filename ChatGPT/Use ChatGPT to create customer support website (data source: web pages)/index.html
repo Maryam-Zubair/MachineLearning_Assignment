@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Question Answering</title>
+    <style>
+        body {
+        background-color: #00264d;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        color: #ffffff;
+    }
+
+    h1 {
+        margin-bottom: 20px; /* Add margin below the heading */
+        color: #66b3ff;
+    }
+
+    form {
+        display: inline-block;
+        text-align: left; /* Align form elements to the left within the container */
+        background-color: #66b3ff; /* Form background color */
+        padding: 20px; /* Add padding to form */
+        border-radius: 10px; /* Add border radius for rounded corners */
+    }
+
+
+    #question {
+        width: 500px; /* Set the width to 500px */
+        padding: 15px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        border-radius: 10px;
+        background-color: #e6f0ff;
+        box-sizing: border-box; /* Include padding and border in the width */
+        min-height: 100px; /* Set a minimum height */
+        resize: vertical;
+        margin: auto; /* Center the text box */
+        display: block;
+    
+    }
+
+        #answer {
+            font-weight: bold; /* Make the answer text bold */
+            border: 2px solid #66b3ff; /* Add a solid border with a light blue color */
+            border-radius: 10px; /* Add border radius for rounded corners */
+            margin-top: 20px; /* Add margin between question and answer */
+            text-align: left; /* Align text to the left */
+            padding: 15px;
+            color: rgb(110, 143, 225)
+        }
+    </style>
+</head>
+<body>
+    <h1>OpenAI Question Answering</h1>
+    <form action="/ask" method="post">
+        <label for="question">Ask a question:</label><br>
+        <input type="text" id="question" name="question"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="answer"></div>
+    
+    <script>
+        document.querySelector('form[action="/ask"]').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const question = document.getElementById('question').value;
+            if (question) {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+                const data = await response.json();
+                document.getElementById('answer').innerText = "Answer: " + data.answer;
+            } else {
+                console.error("Question is empty.");
+            }
+        });
+    </script>
+</body>
+</html>
