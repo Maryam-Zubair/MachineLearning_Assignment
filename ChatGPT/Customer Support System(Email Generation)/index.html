@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Support System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label[for="language"] {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        select[name="language"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .q-container, .a-container {
+            display: table-cell;
+            padding: 10px;
+            box-sizing: border-box;
+            vertical-align: top;
+            border: 1px solid #ccc; /* Border color */
+        }
+
+        .q-container {
+            background-color: #f0f0f0; /* Background color for questions */
+        }
+
+        .a-container {
+            background-color: #ffffff; /* Background color for answers */
+        }
+
+        textarea {
+            width: calc(100% - 24px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <label for="language">Choose the language of Email to be generated:</label>
+        <select name="language">
+            <option value="en" {% if language == 'en' %}selected{% endif %}>English</option>
+            <option value="es" {% if language == 'es' %}selected{% endif %}>Spanish</option>
+            <option value="zh" {% if language == 'zh' %}selected{% endif %}>Chinese</option> 
+        </select>
+
+        <div class="container">
+            <div class="q-container">
+                <label for="question"><h4> Question (Generated Comment):</h4></label>
+                <textarea name="question" rows="10" cols="50" readonly>{{ question }}</textarea>
+            </div>
+            <div class="a-container">
+                <label for="answer"><h4>Answer (Generated Email):</h4></label>
+                <textarea name="answer" rows="10" cols="50" readonly>{{ answer }}</textarea>
+            </div>
+        </div>
+        <input type="submit" value="Process">
+    </form>
+</body>
+</html>
