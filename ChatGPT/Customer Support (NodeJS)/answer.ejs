@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Answer</title>
+    <style>
+        /* Add your styles if needed */
+
+        body {
+            background-color: #e6f0ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: #000;
+        }
+
+        h1 {
+            color: #66b3ff;
+        }
+
+        #answer {
+            font-weight: bold;
+            border: 2px solid #66b3ff;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            padding: 15px;
+            color: rgb(110, 143, 225);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>OpenAI Answer</h1>
+
+    <div id="answer">
+        answer: <%= answer %> 
+    </div>
+    <!-- Move your question and form content here -->
+    <form action="/ask" method="post" id="questionForm">
+        <label for="question">Ask a question:</label><br>
+        <input type="text" id="question" name="question"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

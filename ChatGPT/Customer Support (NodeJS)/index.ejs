@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Question Answering</title>
+    <style>
+        body {
+        background-color: #00264d;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        color: #ffffff;
+    }
+
+    h1 {
+        margin-bottom: 20px; /* Add margin below the heading */
+        color: #66b3ff;
+    }
+
+    form {
+        display: inline-block;
+        text-align: left; /* Align form elements to the left within the container */
+        background-color: #66b3ff; /* Form background color */
+        padding: 20px; /* Add padding to form */
+        border-radius: 10px; /* Add border radius for rounded corners */
+    }
+
+    #question {
+        width: 500px; /* Set the width to 500px */
+        padding: 15px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        border-radius: 10px;
+        background-color: #e6f0ff;
+        box-sizing: border-box; /* Include padding and border in the width */
+        min-height: 100px; /* Set a minimum height */
+        resize: vertical;
+        margin: auto; /* Center the text box */
+        display: block;
+    
+    }
+
+    </style>
+</head>
+<body>
+    <h1>OpenAI Question Answering</h1>
+    <form action="/ask" method="post" id="questionForm"> <!-- added id="questionForm" -->
+        <label for="question">Ask a question:</label><br>
+        <input type="text" id="question" name="question"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    
+    <script>
+        // Corrected the structure of your script
+        document.getElementById('questionForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const question = document.getElementById('question').value;
+            if (question) {
+                try {
+                    const response = await fetch('/ask', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ question })
+                    });
+
+                    const data = await response.json();
+                    console.log('Response from server:', data);
+                    
+                    // if (data.error) {
+                    //     console.error('Error from server:', data.error);
+                    // } else {
+                    //     document.getElementById('answerText').innerText = "Answer: " + data.answer;
+                    // }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            } else {
+                console.error("Question is empty.");
+            }
+        });
+    </script>
+</body>
+</html>
