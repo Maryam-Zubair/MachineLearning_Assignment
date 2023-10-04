@@ -78,3 +78,6 @@ This project aims to create an "Answer Question System" utilizing the GPT-3.5 Tu
   "question": "What is GPT-3.5 Turbo?",
   "context": "Additional context or information related to the question."
 }
+```
+
+<img src="img/ans.png">
