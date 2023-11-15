@@ -157,9 +157,8 @@ def play_audio(audio_segment):
     play_obj.wait_done()
 
 def query_vectordb(vectordb, question, split_documents):
-    # Placeholder function: you will need to implement this based on your specific libraries and data structures.
-    # This function should return the most relevant text chunk(s) from split_documents based on the question.
-    return "Relevant text chunk based on the question"
+    answer = vectordb.similarity_search(question)
+    return answer
 
 def reply(result_queue, verbose, vectordb, split_documents):
     while True:
@@ -176,7 +175,6 @@ def reply(result_queue, verbose, vectordb, split_documents):
                 f"{combined_input}\n"
                 "AI's detailed response:"
             )
-
             # OpenAI API call
             response = openai.Completion.create(
                 engine="text-davinci-003",
@@ -199,6 +197,8 @@ def reply(result_queue, verbose, vectordb, split_documents):
                 print(f"[{time.strftime('%X')}] Generating audio for the response.")
             
             mp3_obj = gTTS(text=answer, lang="en", slow=False)
+            mp3_filename = f"response_{time.strftime('%Y%m%d_%H%M%S')}.mp3"
+            mp3_obj.save(mp3_filename)
             mp3_fp = io.BytesIO()
             mp3_obj.write_to_fp(mp3_fp)
             mp3_fp.seek(0)
@@ -208,6 +208,7 @@ def reply(result_queue, verbose, vectordb, split_documents):
             wav_fp = io.BytesIO()
             sound.export(wav_fp, format="wav")
             wav_fp.seek(0)
+            
 
             if verbose:
                 print(f"[{time.strftime('%X')}] Playing the response.")
@@ -217,13 +218,6 @@ def reply(result_queue, verbose, vectordb, split_documents):
         except Exception as e:
             if verbose:
                 print(f"[{time.strftime('%X')}] Error processing question: {e}")
-
-
         
 init_api()
 main()
-
-
-
-        
-    
