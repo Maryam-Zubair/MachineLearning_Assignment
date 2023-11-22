@@ -26,7 +26,7 @@ In case of disconnection during fine-tuning, utilize the provided command to che
 
 Once fine-tuning is complete, an output confirming the job's completion, cost, and additional details will be generated.
 
-## Implementation
+## Implementation:
 
 ### Step 1: Setting Up the Environment
 
@@ -55,6 +55,27 @@ openai tools fine_tunes.prepare_data -f drug_malady_data.jsonl
 export OPENAI_API_KEY="your_api_key"
 ```
 
+### Step 5: Commence model fine-tuning:
 
+```bash
+ openai api fine_tunes.create \
+  -t "drug_malady_data_prepared_train.jsonl" \
+  -v "drug_malady_data_prepared_valid.jsonl" \
+  --compute_classification_metrics \
+  --classification_n_classes 7 \
+  -m ada \
+  --suffix "drug_malady_data"
+```
 
+### Step 6: Monitor the fine-tuning progress:
+
+```bash
+openai api fine_tunes.follow -i <JOB ID>
+```
+
+### Step 7: Run the test script:
+
+```bash
+python3 test.py
+```
 
